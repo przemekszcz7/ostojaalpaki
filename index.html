@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ostoja Alpaki Brzeźno — Spotkanie, karmienie i nauka o alpakach</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="https://i.ibb.co/KcpDzvwR/685803657-122132952429017804-5728121855800404973-n.jpg" />
+
+  <!-- Google Fonts: Fraunces (Headlines) and Nunito (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ----------------------------------------------------
+       COLOR PALETTE & CSS VARIABLES
+       ---------------------------------------------------- */
+    :root {
+      --cream: #faf7f0;
+      --sand: #e8d5b0;
+      --parchment: #f5ede0;
+      --green: #1e3d2a;
+      --green-mid: #2a4a33;
+      --green-light: #344d3a;
+      --sage: #8aab7e;
+      --caramel: #c4824a;
+      --caramel-dark: #a86830;
+      --caramel-light: #d49a68;
+      --caramel-ghost: rgba(196,130,74,0.08);
+      --sky: #6ba3be;
+      --near-black: #120e08;
+      --text-dark: #1e3d2a;
+      --text-mid: #3a3028;
+      --text-muted: #6a5a48;
+    }
+
+    /* ----------------------------------------------------
+       BASE RESETS & DEFAULTS
+       ---------------------------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-mid);
+      background-color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    body {
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      background-color: var(--cream);
+    }
+
+    /* ----------------------------------------------------
+       TYPOGRAPHY
+       ---------------------------------------------------- */
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Fraunces', serif;
+    }
+
+    p {
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* ----------------------------------------------------
+       NAVBAR / HEADER
+       ---------------------------------------------------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(30, 61, 42, 0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 2px solid var(--caramel);
+      height: 70px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      z-index: 1010;
+    }
+
+    .logo-link svg {
+      color: var(--cream);
+    }
+
+    .logo-text-ostoja {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: #faf7f0;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-text-alpaki {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--caramel);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(250, 247, 240, 0.85);
+      text-decoration: none;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--caramel-light);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--caramel);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-carrot {
+      font-size: 1.2rem;
+      user-select: none;
+      display: inline-block;
+      animation: carrotBounce 2s infinite ease-in-out;
+    }
+
+    /* Hamburger Toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1010;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--cream);
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease;
+    }
+
+    /* Responsive Header Utilities */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--green);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 36px;
+        transform: translateY(-100%);
+        transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 1005;
+        padding: 40px;
+      }
+
+      .menu-active .nav-links {
+        transform: translateY(0);
+      }
+
+      .menu-active .menu-toggle span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .menu-active .menu-toggle span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-active .menu-toggle span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .nav-links a {
+        font-family: 'Fraunces', serif;
+        font-size: 1.8rem;
+        font-style: italic;
+        font-weight: 700;
+        text-transform: none;
+        letter-spacing: normal;
+        color: var(--cream);
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .nav-links-wrapper {
+        gap: 12px;
+      }
+    }
+
+    /* ----------------------------------------------------
+       HERO SECTION
+       ---------------------------------------------------- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background-color: var(--green);
+      background-image: 
+        linear-gradient(to bottom, rgba(30,61,42,0.3) 0%, rgba(30,61,42,0.5) 50%, rgba(30,61,42,0.92) 100%),
+        radial-gradient(ellipse at 40% 30%, rgba(196,130,74,0.18), transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(107,163,190,0.1), transparent 50%),
+        url('https://i.ibb.co/gZgs7wLY/697792785-122168241278731504-660111584976601476-n.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px 24px;
+      overflow: hidden;
+    }
+
+    .hero-floating-alpaca {
+      position: absolute;
+      top: 110px;
+      right: 8%;
+      width: 180px;
+      height: auto;
+      color: var(--cream);
+      opacity: 0.85;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 5;
+      margin-top: auto; /* Pushes content down to lower third of viewport */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-center-alpaca {
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      color: rgba(232, 213, 176, 0.9);
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-headline {
+      margin-bottom: 24px;
+    }
+
+    .hero-witaj {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(250, 247, 240, 0.85);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      display: block;
+      margin-bottom: -4px;
+    }
+
+    .hero-ostoja {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      color: var(--cream);
+      font-size: clamp(3rem, 9vw, 7.5rem);
+      line-height: 0.92;
+      display: block;
+    }
+
+    .hero-brzezno {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--caramel);
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      display: block;
+      margin-top: 8px;
+    }
+
+    .hero-rule {
+      width: 80px;
+      height: 2px;
+      background-color: var(--caramel);
+      margin: 20px auto;
+    }
+
+    .hero-tagline {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      color: rgba(250, 247, 240, 0.85);
+      font-size: 1.1rem;
+      line-height: 1.9;
+      max-width: 620px;
+      margin: 0 auto 28px auto;
+    }
+
+    .hero-carrot-bounce {
+      font-size: 3rem;
+      margin-bottom: 32px;
+      display: inline-block;
+      animation: carrotBounce 2.2s infinite ease-in-out;
+      user-select: none;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    /* ----------------------------------------------------
+       BUTTONS
+       ---------------------------------------------------- */
+    .btn {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 15px 30px;
+      border-radius: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background-color: var(--caramel);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--caramel-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196, 130, 74, 0.35);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--cream);
+      border: 2px solid var(--cream);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(250, 247, 240, 0.1);
+      border-color: var(--caramel);
+      color: var(--caramel);
+      transform: translateY(-2px);
+    }
+
+    .hero-socials {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-social-link {
+      color: rgba(250, 247, 240, 0.7);
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-social-link:hover {
+      color: var(--caramel);
+      transform: translateY(-2px);
+    }
+
+    /* ----------------------------------------------------
+       SECTION STRUCTURAL STYLES
+       ---------------------------------------------------- */
+    section {
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      color: var(--caramel);
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-label svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .section-rule {
+      width: 60px;
+      height: 2px;
+      background-color: var(--caramel);
+      margin: 15px auto 20px auto;
+    }
+
+    .section-rule-left {
+      width: 60px;
+      height: 2px;
+      background-color: var(--caramel);
+      margin: 15px 0 20px 0;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--green);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    }
+
+    .section-title.light {
+      color: var(--cream);
+    }
+
+    .section-subtext {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-top: 10px;
+    }
+
+    /* ----------------------------------------------------
+       SECTION DIVIDERS
+       ---------------------------------------------------- */
+    .divider {
+      width: 100%;
+      display: block;
+      line-height: 0;
+      margin-top: -1px;
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .divider svg {
+      width: 100%;
+      height: 80px;
+      display: block;
+    }
+
+    /* ----------------------------------------------------
+       POZNAJ ALPAKI (Meet the Alpacas)
+       ---------------------------------------------------- */
+    .bg-cream {
+      background-color: var(--cream);
+    }
+
+    .dot-grid {
+      position: relative;
+    }
+
+    .dot-grid::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(rgba(196,130,74,0.05) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .blob-caramel {
+      position: absolute;
+      top: 10%;
+      right: -10%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(196,130,74,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .watermark-alpaca {
+      position: absolute;
+      bottom: -10%;
+      left: -5%;
+      width: 35vw;
+      height: auto;
+      color: rgba(196,130,74,0.02);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .poznaj-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .poznaj-text {
+      display: flex;
+      flex-direction: column;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .poznaj-body {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 2.1;
+      color: var(--text-mid);
+      margin-bottom: 36px;
+    }
+
+    .experience-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .experience-row {
+      border-left: 3px solid var(--caramel);
+      padding-left: 20px;
+    }
+
+    .experience-row-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+
+    .experience-row-desc {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .fun-fact-box {
+      background-color: var(--sage);
+      color: #fff;
+      border-radius: 12px;
+      padding: 1.25rem 1.75rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 400;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      box-shadow: 0 6px 20px rgba(138, 171, 126, 0.25);
+    }
+
+    .poznaj-decor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .oval-frame {
+      width: 320px;
+      height: 380px;
+      border: 3px solid var(--caramel);
+      border-radius: 200px / 180px; /* Unique organic oval shape */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--cream);
+      position: relative;
+      box-shadow: 0 12px 36px rgba(196, 130, 74, 0.08);
+      z-index: 3;
+    }
+
+    .oval-frame svg.detailed-alpaca {
+      color: var(--green);
+      width: 170px;
+      height: auto;
+    }
+
+    .oval-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--caramel);
+      font-size: 1.45rem;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .oval-subtitle {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .floating-carrot {
+      position: absolute;
+      bottom: 24px;
+      right: 12%;
+      width: 48px;
+      height: auto;
+      z-index: 4;
+      animation: carrotRotate 4s infinite ease-in-out;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+    }
+
+    @media (max-width: 991px) {
+      .poznaj-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .poznaj-decor {
+        order: -1; /* Display graphic above on tablet/mobile */
+        margin-bottom: 20px;
+      }
+    }
+
+    /* ----------------------------------------------------
+       CO CIĘ CZEKA (What awaits you)
+       ---------------------------------------------------- */
+    .bg-forest {
+      background-color: var(--green);
+    }
+
+    .grain-texture {
+      position: relative;
+    }
+
+    .grain-texture::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: repeating-linear-gradient(170deg, rgba(196,130,74,0.015), rgba(196,130,74,0.015) 1px, transparent 1px, transparent 30px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .radial-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(196,130,74,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+
+    .activity-card {
+      background-color: var(--green-mid);
+      border-radius: 16px;
+      border-top: 3px solid var(--caramel);
+      padding: 36px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 3;
+    }
+
+    .activity-card:hover {
+      background-color: var(--green-light);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(196, 130, 74, 0.25);
+    }
+
+    .card-emoji-container {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: rgba(196, 130, 74, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .card-body {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      font-size: 0.96rem;
+      line-height: 1.8;
+      color: rgba(250, 247, 240, 0.75);
+    }
+
+    .card-badge {
+      align-self: flex-start;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .badge-caramel {
+      background-color: rgba(196, 130, 74, 0.2);
+      color: var(--caramel-light);
+    }
+
+    .badge-orange {
+      background-color: rgba(232, 130, 26, 0.15);
+      color: #e8821a;
+    }
+
+    .badge-sage {
+      background-color: rgba(138, 171, 126, 0.2);
+      color: var(--sage);
+    }
+
+    .badge-sky {
+      background-color: rgba(107, 163, 190, 0.2);
+      color: var(--sky);
+    }
+
+    .cta-strip {
+      background: linear-gradient(135deg, var(--caramel) 0%, var(--caramel-dark) 100%);
+      border-radius: 16px;
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      z-index: 3;
+      box-shadow: 0 8px 30px rgba(196, 130, 74, 0.2);
+    }
+
+    .cta-strip-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      color: #fff;
+      font-size: 1.4rem;
+    }
+
+    .btn-cta-white {
+      background-color: #fff;
+      color: var(--caramel);
+      border: none;
+    }
+
+    .btn-cta-white:hover {
+      background-color: var(--cream);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .cta-strip {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 24px;
+      }
+    }
+
+    /* ----------------------------------------------------
+       GALERIA (Photo Gallery)
+       ---------------------------------------------------- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      cursor: pointer;
+      height: 240px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.1) contrast(1.02);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(196, 130, 74, 0.25);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-overlay-icon {
+      color: #fff;
+      background: rgba(30, 61, 42, 0.85);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0.8);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border: 1px solid var(--caramel);
+    }
+
+    .gallery-overlay-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-item:hover .gallery-overlay-icon {
+      transform: scale(1);
+    }
+
+    .gallery-item:hover {
+      box-shadow: 0 8px 24px rgba(196, 130, 74, 0.28);
+    }
+
+    /* Tablet & Mobile (Symmetrical 2 columns grid) */
+    @media (max-width: 991px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-item {
+        height: 190px;
+      }
+    }
+
+    .gallery-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-fb {
+      background-color: var(--caramel);
+      color: #fff;
+    }
+
+    .btn-fb:hover {
+      background-color: var(--caramel-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(196, 130, 74, 0.3);
+    }
+
+    .btn-tt {
+      background-color: var(--green);
+      color: #fff;
+      border: 1px solid rgba(250, 247, 240, 0.2);
+    }
+
+    .btn-tt:hover {
+      background-color: var(--green-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(30, 61, 42, 0.3);
+    }
+
+    /* ----------------------------------------------------
+       LIGHTBOX MODAL
+       ---------------------------------------------------- */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(18, 14, 8, 0.95);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 85%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-img {
+      max-width: 85vw;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 3px solid var(--caramel);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      display: block;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      color: var(--cream);
+      background: transparent;
+      border: none;
+      font-size: 2.2rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .lightbox-close:hover {
+      color: var(--caramel);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--cream);
+      background: rgba(196, 130, 74, 0.2);
+      border: none;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      user-select: none;
+      border: 1px solid rgba(250, 247, 240, 0.1);
+    }
+
+    .lightbox-nav:hover {
+      background-color: var(--caramel);
+      color: #fff;
+    }
+
+    .lightbox-prev {
+      left: -76px;
+    }
+
+    .lightbox-next {
+      right: -76px;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-prev {
+        left: 8px;
+        background: rgba(18, 14, 8, 0.65);
+        width: 44px;
+        height: 44px;
+      }
+      .lightbox-next {
+        right: 8px;
+        background: rgba(18, 14, 8, 0.65);
+        width: 44px;
+        height: 44px;
+      }
+      .lightbox-close {
+        top: -48px;
+        right: 4px;
+      }
+    }
+
+    /* ----------------------------------------------------
+       CIEKAWOSTKI O ALPAKACH (Fun Facts)
+       ---------------------------------------------------- */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .fact-card {
+      background-color: var(--green-mid);
+      border-top: 3px solid var(--caramel);
+      border-radius: 14px;
+      padding: 32px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .fact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(196, 130, 74, 0.18);
+      border-top-color: var(--caramel-light);
+    }
+
+    .fact-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+      user-select: none;
+    }
+
+    .fact-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cream);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .fact-body {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(250, 247, 240, 0.72);
+      text-align: center;
+    }
+
+    @media (max-width: 991px) {
+      .facts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .facts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ----------------------------------------------------
+       LOKALIZACJA I KONTAKT (Location + Contact)
+       ---------------------------------------------------- */
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .contact-logo-svg {
+      color: var(--caramel);
+      margin-bottom: 12px;
+    }
+
+    .location-block {
+      border-left: 3px solid var(--caramel);
+      padding: 10px 0 10px 24px;
+      margin: 28px 0;
+      text-align: left;
+      align-self: stretch;
+    }
+
+    .location-label {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+
+    .location-text {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: var(--text-dark);
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .contact-buttons .btn {
+      width: 100%;
+    }
+
+    .contact-note {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .fun-callout {
+      background-color: rgba(196, 130, 74, 0.12);
+      border: 1px solid var(--caramel);
+      border-radius: 12px;
+      padding: 24px;
+      align-self: stretch;
+      text-align: center;
+    }
+
+    .fun-callout-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .fun-callout-desc {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      font-size: 0.88rem;
+      color: #5a4a38;
+      line-height: 1.5;
+    }
+
+    /* Meadow Scene CSS Graphic */
+    .meadow-scene {
+      width: 100%;
+      height: 280px;
+      position: relative;
+      background: linear-gradient(to bottom, #a8cfe0 0%, #d4eef7 35%, #e8f5f0 65%, #faf7f0 100%);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(138, 171, 126, 0.2);
+    }
+
+    .meadow-hill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: var(--sage);
+      border-radius: 60% 60% 0 0 / 80px 80px 0 0;
+      z-index: 2;
+    }
+
+    .meadow-sun {
+      position: absolute;
+      top: 25px;
+      right: 40px;
+      width: 55px;
+      height: 55px;
+      background: var(--caramel);
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(196,130,74,0.45);
+      z-index: 1;
+    }
+
+    .meadow-alpaca {
+      position: absolute;
+      bottom: 80px;
+      z-index: 3;
+    }
+
+    .meadow-alpaca svg {
+      width: 45px;
+      height: auto;
+    }
+
+    .meadow-alpaca-1 {
+      left: 15%;
+      color: var(--caramel);
+    }
+
+    .meadow-alpaca-2 {
+      left: 45%;
+      color: var(--cream);
+      transform: scale(0.8);
+    }
+
+    .meadow-alpaca-3 {
+      left: 70%;
+      color: var(--cream);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 991px) {
+      .contact-grid {
+        gap: 50px;
+      }
+    }
+
+    /* ----------------------------------------------------
+       FOOTER
+       ---------------------------------------------------- */
+    footer {
+      background-color: var(--green);
+      border-top: 2px solid var(--caramel);
+      padding: 64px 24px 44px 24px;
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .footer-logo {
+      color: var(--cream);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .footer-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .footer-subtitle {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      color: rgba(250, 247, 240, 0.45);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .footer-rule {
+      width: 80px;
+      height: 1px;
+      background-color: rgba(196, 130, 74, 0.3);
+      margin: 15px auto;
+    }
+
+    .footer-note {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: rgba(250, 247, 240, 0.55);
+      margin-bottom: 24px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .footer-social-link {
+      color: var(--caramel);
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-social-link:hover {
+      color: var(--caramel-light);
+      transform: translateY(-2px);
+    }
+
+    .footer-copyright {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      color: rgba(250, 247, 240, 0.2);
+      margin-top: 24px;
+    }
+
+    /* ----------------------------------------------------
+       ANIMATIONS (Bobbing / Rotations)
+       ---------------------------------------------------- */
+    @keyframes alpacaBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes carrotBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes carrotRotate {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(12deg); }
+    }
+
+    .alpaca-bob { animation: alpacaBob 3s ease-in-out infinite; }
+    .alpaca-bob-slow { animation: alpacaBob 4s ease-in-out infinite; animation-delay: -1s; }
+    .alpaca-bob-fast { animation: alpacaBob 2.5s ease-in-out infinite; animation-delay: -2s; }
+
+    /* ----------------------------------------------------
+       REVEAL-ON-SCROLL EFFECTS
+       ---------------------------------------------------- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ----------------------------------------------------
+       PREFERS REDUCED MOTION (ACCESSIBILITY)
+       ---------------------------------------------------- */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .alpaca-bob, .alpaca-bob-slow, .alpaca-bob-fast, .hero-floating-alpaca, .hero-carrot-bounce, .floating-carrot {
+        animation: none !important;
+      }
+      * {
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ----------------------------------------------------
+       NAVBAR
+       ---------------------------------------------------- -->
+  <header id="navHeader">
+    <div class="nav-container">
+      <a href="#" class="logo-link">
+        <div>
+          <span class="logo-text-ostoja">Ostoja</span>
+          <span class="logo-text-alpaki">Alpaki</span>
+        </div>
+      </a>
+
+      <div class="nav-links-wrapper">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#poznaj-alpaki">Poznaj nas</a></li>
+            <li><a href="#co-cie-czeka">Atrakcje</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+        <span class="nav-carrot">🥕</span>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Otwórz menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ----------------------------------------------------
+       HERO
+       ---------------------------------------------------- -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      
+      <span class="hero-eyebrow">Brzeźno · Sadowa 8</span>
+      <h1 class="hero-headline">
+        <span class="hero-witaj">Witaj w</span>
+        <span class="hero-ostoja">Ostoja Alpaki</span>
+        <span class="hero-brzezno">Brzeźno</span>
+      </h1>
+      
+      <div class="hero-rule"></div>
+      
+      <p class="hero-tagline">
+        Spotkaj nasze alpaki, nakarm je marchewką i poznaj tajemnice tych wyjątkowych stworzeń!
+      </p>
+      
+      <div class="hero-carrot-bounce">🥕</div>
+      
+      <div class="hero-buttons">
+        <a href="https://www.facebook.com/profile.php?id=61580534129809" target="_blank" rel="noopener" class="btn btn-primary">Odwiedź nas!</a>
+        <a href="#galeria" class="btn btn-secondary">Galeria zdjęć ↓</a>
+      </div>
+
+      <div class="hero-socials">
+        <!-- Facebook Icon -->
+        <a href="https://www.facebook.com/profile.php?id=61580534129809" target="_blank" rel="noopener" class="hero-social-link" aria-label="Facebook">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+          </svg>
+        </a>
+        <!-- TikTok Icon -->
+        <a href="https://www.tiktok.com/@alpacove_love2025" target="_blank" rel="noopener" class="hero-social-link" aria-label="TikTok">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.02a8.19 8.19 0 004.79 1.54V7.12a4.85 4.85 0 01-1.02-.43z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organic Divider (Cream Hills on Forest Green) -->
+  <div class="divider">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,50 C200,20 350,80 540,40 C720,0 900,70 1100,35 C1280,5 1380,60 1440,40 L1440,80 L0,80 Z" fill="#faf7f0"/>
+    </svg>
+  </div>
+
+  <!-- ----------------------------------------------------
+       POZNAJ ALPAKI (Meet the Alpacas)
+       ---------------------------------------------------- -->
+  <section class="bg-cream dot-grid" id="poznaj-alpaki">
+    <div class="blob-caramel"></div>
+    <!-- Watermark Alpaca -->
+    <svg class="watermark-alpaca" viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+      <ellipse cx="28" cy="48" rx="20" ry="14"/>
+      <rect x="22" y="28" width="10" height="22" rx="5"/>
+      <ellipse cx="27" cy="22" rx="9" ry="8"/>
+      <ellipse cx="21" cy="14" rx="3" ry="5" transform="rotate(-15 21 14)"/>
+      <ellipse cx="33" cy="14" rx="3" ry="5" transform="rotate(15 33 14)"/>
+      <ellipse cx="27" cy="17" rx="7" ry="4" opacity="0.6"/>
+      <rect x="14" y="58" width="6" height="12" rx="3"/>
+      <rect x="22" y="58" width="6" height="12" rx="3"/>
+      <rect x="30" y="58" width="6" height="12" rx="3"/>
+      <rect x="38" y="58" width="6" height="12" rx="3"/>
+    </svg>
+
+    <div class="container poznaj-grid">
+      <div class="poznaj-text fade-up">
+        <span class="section-label">
+          <svg viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <ellipse cx="28" cy="48" rx="20" ry="14"/>
+            <rect x="22" y="28" width="10" height="22" rx="5"/>
+            <ellipse cx="27" cy="22" rx="9" ry="8"/>
+          </svg>
+          POZNAJ NAS
+        </span>
+        <div class="section-rule-left"></div>
+        <h2 class="section-title">Spotkanie, które zostaje w sercu.</h2>
+        <p class="poznaj-body">
+          Ostoja Alpaki Brzeźno to wyjątkowe miejsce, gdzie możesz zbliżyć się do tych fascynujących zwierząt. Nasze alpaki są łagodne, ciekawskie i pełne osobowości. Dowiedz się ciekawostek o ich życiu, zwyczajach i charakterze — a potem nakarm je ich ulubioną marchewką prosto z dłoni!
+        </p>
+
+        <div class="experience-rows">
+          <div class="experience-row">
+            <h3 class="experience-row-title">🥕 Karm marchewką</h3>
+            <p class="experience-row-desc">Nakarm alpaki prosto z ręki — niezapomniane i radosne doświadczenie!</p>
+          </div>
+          <div class="experience-row">
+            <h3 class="experience-row-title">📚 Poznaj ciekawostki</h3>
+            <p class="experience-row-desc">Dowiedz się wszystkiego o alpakach — ich pochodzeniu, codziennym życiu i wełnie.</p>
+          </div>
+          <div class="experience-row">
+            <h3 class="experience-row-title">📸 Zrób zdjęcia</h3>
+            <p class="experience-row-desc">Idealne tło do unikalnych fotografii — nasze milusińskie uwielbiają pozować!</p>
+          </div>
+        </div>
+
+        <div class="fun-fact-box">
+          💡 Czy wiesz? Alpaka może żyć nawet 20 lat i produkuje jedną z najmilszych i najzdrowszych wełn na świecie!
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Organic Divider (Green Hills on Cream) -->
+  <div class="divider">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C180,70 360,10 540,50 C720,80 900,20 1100,55 C1280,80 1380,30 1440,50 L1440,80 L0,80 Z" fill="#1e3d2a"/>
+    </svg>
+  </div>
+
+  <!-- ----------------------------------------------------
+       CO CIĘ CZEKA (What awaits you)
+       ---------------------------------------------------- -->
+  <section class="bg-forest grain-texture" id="co-cie-czeka">
+    <div class="radial-glow"></div>
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">
+          ATRAKCJE
+        </span>
+        <div class="section-rule"></div>
+        <h2 class="section-title light">Co Cię czeka w Ostoi?</h2>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <div class="activity-card fade-up">
+          <span class="card-badge badge-caramel">Doświadczenie</span>
+          <div class="card-emoji-container">🤝</div>
+          <h3 class="card-title">Spotkanie z alpakami</h3>
+          <p class="card-body">Wejdź na pastwisko i poznaj nasze łagodne alpaki z bliska. Każda ma swój unikalny charakter!</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="activity-card fade-up" style="transition-delay: 0.1s;">
+          <span class="card-badge badge-orange">Ulubiona przekąska</span>
+          <div class="card-emoji-container">🥕</div>
+          <h3 class="card-title">Karmienie marchewką</h3>
+          <p class="card-body">Nakarm alpaki ich ulubioną marchewką prosto z dłoni — to doświadczenie, o którym długo się pamięta.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="activity-card fade-up" style="transition-delay: 0.15s;">
+          <span class="card-badge badge-sage">Wiedza</span>
+          <div class="card-emoji-container">📖</div>
+          <h3 class="card-title">Ciekawostki o alpakach</h3>
+          <p class="card-body">Dowiedz się fascynujących rzeczy o tych niezwykłych zwierzętach — ich historii, wełnie i zwyczajach.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="activity-card fade-up" style="transition-delay: 0.2s;">
+          <span class="card-badge badge-sky">Wspomnienia</span>
+          <div class="card-emoji-container">📸</div>
+          <h3 class="card-title">Fotografie na pastwisku</h3>
+          <p class="card-body">Alpaki to naturalne gwiazdy zdjęć! Zrób pamiątkowe fotografie w przepięknym wiejskim otoczeniu.</p>
+        </div>
+      </div>
+
+      <div class="cta-strip fade-up">
+        <div class="cta-strip-text">🥕 Zarezerwuj wizytę przez Facebook!</div>
+        <a href="https://www.facebook.com/profile.php?id=61580534129809" target="_blank" rel="noopener" class="btn btn-cta-white">Napisz do nas →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organic Divider (Cream Hills on Forest Green) -->
+  <div class="divider">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,50 C200,20 350,80 540,40 C720,0 900,70 1100,35 C1280,5 1380,60 1440,40 L1440,80 L0,80 Z" fill="#faf7f0"/>
+    </svg>
+  </div>
+
+  <!-- ----------------------------------------------------
+       GALERIA (Photo Gallery)
+       ---------------------------------------------------- -->
+  <section class="bg-cream dot-grid" id="galeria">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+          GALERIA
+        </span>
+        <div class="section-rule"></div>
+        <h2 class="section-title">Nasze milusińskie</h2>
+        <p class="section-subtext">Każde zdjęcie to chwila, która zostaje w sercu.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- G1 -->
+        <div class="gallery-item g-item-1 fade-up" data-image-url="https://i.ibb.co/N2hZ9zfY/732103168-122138229951017804-7667117767314352282-n.jpg">
+          <img src="https://i.ibb.co/N2hZ9zfY/732103168-122138229951017804-7667117767314352282-n.jpg" alt="Alpaki w Ostoi" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- G2 -->
+        <div class="gallery-item g-item-2 fade-up" style="transition-delay: 0.05s;" data-image-url="https://i.ibb.co/MkWynM1x/733209983-122138230443017804-2681517083089733199-n.jpg">
+          <img src="https://i.ibb.co/MkWynM1x/733209983-122138230443017804-2681517083089733199-n.jpg" alt="Urocza alpaka z bliska" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- G3 -->
+        <div class="gallery-item g-item-3 fade-up" style="transition-delay: 0.1s;" data-image-url="https://i.ibb.co/FqDP14Kc/731173401-122138230431017804-6277428238053499935-n.jpg">
+          <img src="https://i.ibb.co/FqDP14Kc/731173401-122138230431017804-6277428238053499935-n.jpg" alt="Alpaki na zielonej trawie" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- G4 -->
+        <div class="gallery-item g-item-4 fade-up" style="transition-delay: 0.15s;" data-image-url="https://i.ibb.co/gF7NNQfn/698200751-122168246126731504-1421487481362624556-n.jpg">
+          <img src="https://i.ibb.co/gF7NNQfn/698200751-122168246126731504-1421487481362624556-n.jpg" alt="Przekąska dla alpaki" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- G5 -->
+        <div class="gallery-item g-item-5 fade-up" style="transition-delay: 0.2s;" data-image-url="https://i.ibb.co/wr8cfCjR/689482369-122168246084731504-2657966938864691853-n.jpg">
+          <img src="https://i.ibb.co/wr8cfCjR/689482369-122168246084731504-2657966938864691853-n.jpg" alt="Alpaki jedzące marchewki" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- G6 -->
+        <div class="gallery-item g-item-6 fade-up" style="transition-delay: 0.25s;" data-image-url="https://i.ibb.co/JWYdQSfv/697792841-122168246000731504-7798158889399995558-n.jpg">
+          <img src="https://i.ibb.co/JWYdQSfv/697792841-122168246000731504-7798158889399995558-n.jpg" alt="Grupa alpak czekająca na gości" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- G7 -->
+        <div class="gallery-item g-item-7 fade-up" style="transition-delay: 0.3s;" data-image-url="https://i.ibb.co/KxP1nvBp/697792540-122168241362731504-9020656707130242833-n.jpg">
+          <img src="https://i.ibb.co/KxP1nvBp/697792540-122168241362731504-9020656707130242833-n.jpg" alt="Alpaki na wybiegu" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- G8 -->
+        <div class="gallery-item g-item-8 fade-up" style="transition-delay: 0.35s;" data-image-url="https://i.ibb.co/WpNddN8H/698434895-122168241320731504-7524696033590069816-n.jpg">
+          <img src="https://i.ibb.co/WpNddN8H/698434895-122168241320731504-7524696033590069816-n.jpg" alt="Zbliżenie na puszystą wełnę alpaki" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- G9 -->
+        <div class="gallery-item g-item-9 fade-up" style="transition-delay: 0.4s;" data-image-url="https://i.ibb.co/pvwGPb9T/689020304-122168241236731504-3862167929799491871-n.jpg">
+          <img src="https://i.ibb.co/pvwGPb9T/689020304-122168241236731504-3862167929799491871-n.jpg" alt="Alpaki pozujące razem" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- G10 -->
+        <div class="gallery-item g-item-10 fade-up" style="transition-delay: 0.45s;" data-image-url="https://i.ibb.co/fdfF2vNs/698023424-122168241086731504-8105152964539336841-n.jpg">
+          <img src="https://i.ibb.co/fdfF2vNs/698023424-122168241086731504-8105152964539336841-n.jpg" alt="Karmienie łagodnej alpaki" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-buttons fade-up">
+        <a href="https://www.facebook.com/profile.php?id=61580534129809" target="_blank" rel="noopener" class="btn btn-fb">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+          </svg>
+          Więcej na Facebooku
+        </a>
+        <a href="https://www.tiktok.com/@alpacove_love2025" target="_blank" rel="noopener" class="btn btn-tt">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.02a8.19 8.19 0 004.79 1.54V7.12a4.85 4.85 0 01-1.02-.43z"/>
+          </svg>
+          TikTok — @alpacove_love2025
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organic Divider (Green Hills on Cream) -->
+  <div class="divider">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C180,70 360,10 540,50 C720,80 900,20 1100,55 C1280,80 1380,30 1440,50 L1440,80 L0,80 Z" fill="#1e3d2a"/>
+    </svg>
+  </div>
+
+  <!-- ----------------------------------------------------
+       CIEKAWOSTKI O ALPAKACH (Fun Facts)
+       ---------------------------------------------------- -->
+  <section class="bg-forest grain-texture" id="ciekawostki">
+    <div class="radial-glow"></div>
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">
+          <svg viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <ellipse cx="28" cy="48" rx="20" ry="14"/>
+            <rect x="22" y="28" width="10" height="22" rx="5"/>
+            <ellipse cx="27" cy="22" rx="9" ry="8"/>
+          </svg>
+          CIEKAWOSTKI
+        </span>
+        <div class="section-rule"></div>
+        <h2 class="section-title light">Fascynujący świat alpak</h2>
+      </div>
+
+      <div class="facts-grid">
+        <!-- Fact 1 -->
+        <div class="fact-card fade-up">
+          <div class="fact-emoji">🌍</div>
+          <h3 class="fact-title">Pochodzenie</h3>
+          <p class="fact-body">Alpaki pochodzą z Andów w Ameryce Południowej — głównie z Peru, Boliwii i Chile, gdzie żyją na dużych wysokościach.</p>
+        </div>
+
+        <!-- Fact 2 -->
+        <div class="fact-card fade-up" style="transition-delay: 0.05s;">
+          <div class="fact-emoji">🧶</div>
+          <h3 class="fact-title">Wełna</h3>
+          <p class="fact-body">Ich wełna jest hipoalergiczna, o wiele cieplejsza niż wełna owcza, lżejsza i niezwykle jedwabista w dotyku.</p>
+        </div>
+
+        <!-- Fact 3 -->
+        <div class="fact-card fade-up" style="transition-delay: 0.1s;">
+          <div class="fact-emoji">🥕</div>
+          <h3 class="fact-title">Dieta</h3>
+          <p class="fact-body">Są przeżuwaczami. Podstawą ich diety jest trawa i siano, a soczysta marchewka to dla nich najlepszy, wyczekiwany przysmak!</p>
+        </div>
+
+        <!-- Fact 4 -->
+        <div class="fact-card fade-up" style="transition-delay: 0.15s;">
+          <div class="fact-emoji">🗣️</div>
+          <h3 class="fact-title">Komunikacja</h3>
+          <p class="fact-body">Alpaki komunikują się za pomocą specyficznego, cichego mruczenia, chrząkania oraz ruchów szyi i charakterystycznych uszu.</p>
+        </div>
+
+        <!-- Fact 5 -->
+        <div class="fact-card fade-up" style="transition-delay: 0.2s;">
+          <div class="fact-emoji">❤️</div>
+          <h3 class="fact-title">Charakter</h3>
+          <p class="fact-body">To niesamowicie łagodne, towarzyskie i ciekawskie stworzenia. Bardzo szybko nawiązują przyjazną relację z ludźmi.</p>
+        </div>
+
+        <!-- Fact 6 -->
+        <div class="fact-card fade-up" style="transition-delay: 0.25s;">
+          <div class="fact-emoji">⏰</div>
+          <h3 class="fact-title">Długość życia</h3>
+          <p class="fact-body">Alpaka żyje średnio 15–20 lat. Są to inteligentne i wierne zwierzęta, które wnoszą mnóstwo spokoju i radości.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organic Divider (Cream Hills on Forest Green) -->
+  <div class="divider">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,50 C200,20 350,80 540,40 C720,0 900,70 1100,35 C1280,5 1380,60 1440,40 L1440,80 L0,80 Z" fill="#faf7f0"/>
+    </svg>
+  </div>
+
+  <!-- ----------------------------------------------------
+       LOKALIZACJA I KONTAKT (Location + Contact)
+       ---------------------------------------------------- -->
+  <section class="bg-cream dot-grid" id="kontakt">
+    <div class="container contact-grid">
+      <div class="contact-left fade-up">
+        <!-- Alpaca Logo SVG (48px size) -->
+        <svg width="48" height="56" viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="contact-logo-svg alpaca-bob">
+          <ellipse cx="28" cy="48" rx="20" ry="14"/>
+          <rect x="22" y="28" width="10" height="22" rx="5"/>
+          <ellipse cx="27" cy="22" rx="9" ry="8"/>
+          <ellipse cx="21" cy="14" rx="3" ry="5" transform="rotate(-15 21 14)"/>
+          <ellipse cx="33" cy="14" rx="3" ry="5" transform="rotate(15 33 14)"/>
+          <ellipse cx="27" cy="17" rx="7" ry="4" opacity="0.6"/>
+          <rect x="14" y="58" width="6" height="12" rx="3"/>
+          <rect x="22" y="58" width="6" height="12" rx="3"/>
+          <rect x="30" y="58" width="6" height="12" rx="3"/>
+          <rect x="38" y="58" width="6" height="12" rx="3"/>
+        </svg>
+
+        <span class="section-label">GDZIE NAS ZNAJDZIESZ</span>
+        <div class="section-rule"></div>
+        <h2 class="section-title">Odwiedź nas w Brzeźnie</h2>
+
+        <div class="location-block">
+          <div class="location-label">📍 Adres Zagrody:</div>
+          <div class="location-text">Sadowa 8, 22-174 Brzeźno, Polska</div>
+        </div>
+
+        <div class="contact-buttons">
+          <a href="https://www.facebook.com/profile.php?id=61580534129809" target="_blank" rel="noopener" class="btn btn-fb">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+            </svg>
+            Ostoja Alpaki na Facebooku
+          </a>
+          <a href="https://www.tiktok.com/@alpacove_love2025" target="_blank" rel="noopener" class="btn btn-tt">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.02a8.19 8.19 0 004.79 1.54V7.12a4.85 4.85 0 01-1.02-.43z"/>
+            </svg>
+            TikTok — Alpacove Love
+          </a>
+        </div>
+
+        <p class="contact-note">
+          Skontaktuj się z nami przez Facebook — chętnie odpowiemy na wszystkie pytania i umówimy wizytę dla Ciebie i Twojej rodziny!
+        </p>
+
+        <div class="fun-callout">
+          <div class="fun-callout-title">🥕 Przynieś marchewkę — lub kup ją u nas!</div>
+          <p class="fun-callout-desc">Nasze alpaki nie mogą się doczekać Twojej wizyty 🦙</p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Organic Divider (Green Hills on Cream) -->
+  <div class="divider">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C180,70 360,10 540,50 C720,80 900,20 1100,55 C1280,80 1380,30 1440,50 L1440,80 L0,80 Z" fill="#1e3d2a"/>
+    </svg>
+  </div>
+
+  <!-- ----------------------------------------------------
+       FOOTER
+       ---------------------------------------------------- -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-title">Ostoja Alpaki</div>
+      <div class="footer-subtitle">Brzeźno · Sadowa 8</div>
+      
+      <div class="footer-rule"></div>
+      
+      <p class="footer-note">🥕 Czekamy na Was z marchewką w dłoni!</p>
+
+      <div class="footer-socials">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=61580534129809" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+          </svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@alpacove_love2025" target="_blank" rel="noopener" class="footer-social-link" aria-label="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.02a8.19 8.19 0 004.79 1.54V7.12a4.85 4.85 0 01-1.02-.43z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-rule" style="width: 40px; opacity: 0.15;"></div>
+
+      <p class="footer-copyright">
+        &copy; 2026 Ostoja Alpaki Brzeźno | Sadowa 8, 22-174 Brzeźno
+      </p>
+    </div>
+  </footer>
+
+  <!-- ----------------------------------------------------
+       LIGHTBOX / MODAL CONTAINER
+       ---------------------------------------------------- -->
+  <div class="lightbox" id="lightbox" aria-label="Podgląd zdjęcia">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij podgląd">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Poprzednie zdjęcie">&#10094;</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="Podgląd powiększonego zdjęcia" />
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Następne zdjęcie">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- ----------------------------------------------------
+       VANILLA JAVASCRIPT LOGIC
+       ---------------------------------------------------- -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Mobile Menu Toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const navHeader = document.getElementById('navHeader');
+      
+      if (menuToggle && navHeader) {
+        menuToggle.addEventListener('click', () => {
+          navHeader.classList.toggle('menu-active');
+        });
+      }
+
+      // Close mobile menu when clicking nav links
+      const navLinks = document.querySelectorAll('.nav-links a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navHeader) {
+            navHeader.classList.remove('menu-active');
+          }
+        });
+      });
+
+      // 2. Intersection Observer for scroll-reveal animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const fadeItems = document.querySelectorAll('.fade-up');
+      fadeItems.forEach(item => {
+        observer.observe(item);
+      });
+
+      // 3. Lightbox Gallery Logic
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxPrev = document.getElementById('lightboxPrev');
+      const lightboxNext = document.getElementById('lightboxNext');
+      
+      let currentImageIndex = 0;
+      const imageUrls = Array.from(galleryItems).map(item => item.getAttribute('data-image-url'));
+
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          currentImageIndex = index;
+          openLightbox();
+        });
+      });
+
+      function openLightbox() {
+        if (lightbox && lightboxImg) {
+          lightboxImg.src = imageUrls[currentImageIndex];
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeLightbox() {
+        if (lightbox) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      function showNextImage() {
+        if (lightboxImg) {
+          currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
+          lightboxImg.src = imageUrls[currentImageIndex];
+        }
+      }
+
+      function showPrevImage() {
+        if (lightboxImg) {
+          currentImageIndex = (currentImageIndex - 1 + imageUrls.length) % imageUrls.length;
+          lightboxImg.src = imageUrls[currentImageIndex];
+        }
+      }
+
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      if (lightboxNext) lightboxNext.addEventListener('click', showNextImage);
+      if (lightboxPrev) lightboxPrev.addEventListener('click', showPrevImage);
+
+      // Close lightbox by clicking background
+      if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+      }
+
+      // Keyboard navigation support in Lightbox
+      document.addEventListener('keydown', (e) => {
+        if (lightbox && lightbox.classList.contains('active')) {
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowRight') showNextImage();
+          if (e.key === 'ArrowLeft') showPrevImage();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

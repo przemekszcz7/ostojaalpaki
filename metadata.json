@@ -1,0 +1,6 @@
+{
+  "name": "Ostoja Alpaki Brzeźno",
+  "description": "Urocza zagroda alpak blisko Brzeźna - spotkaj, nakarm i poznaj te niezwykłe stworzenia!",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
